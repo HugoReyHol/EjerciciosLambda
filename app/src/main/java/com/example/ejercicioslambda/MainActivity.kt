@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        val esPrimo:(num: Int) -> Boolean = esPrimo@{
+        val esPrimo:(Int) -> Boolean = esPrimo@{
             for (i in 2..it/2) {
                 if (it % i == 0) {
                     return@esPrimo false
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        val esMagico:(num: Int) -> Boolean = {
+        val esMagico:(Int) -> Boolean = {
             var numElevado: Int = it.toDouble().pow(3).toInt()
             var sumaDig: Int = 0
 
@@ -45,25 +45,20 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-            var magico: Boolean = false
-            if (sumaDig == it) magico = true
-
-            magico
+            sumaDig == it
 
         }
 
-        val esCapicua:(num: Int) -> Boolean = esCapicua@{
+        val esCapicua:(Int) -> Boolean = {
             val numInv: Int = it.toString().reversed().toInt()
 
-            if (numInv == it) return@esCapicua true
-
-            false
+            numInv == it
         }
 
-        fun filtArray(lista: Array<Int>, f: (num:Int) -> Boolean): ArrayList<Int> {
+        fun filtArray(lista: Array<Int>, f: (Int) -> Boolean): ArrayList<Int> {
             val listaSalida: ArrayList<Int> = arrayListOf()
 
-            for (num: Int in lista) {
+            for (num in lista) {
                 if (f(num)) listaSalida.add(num)
 
             }
